@@ -1,0 +1,59 @@
+group 'myProject'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        maven { url "https://repo.spring.io/libs-release" }
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE")
+        classpath 'org.springframework:springloaded:1.2.3.RELEASE'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
+    }
+}
+
+jar {
+    baseName = 'spring-angularjs-etalon'
+    version = '0.2.1'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://repo.spring.io/libs-release" }
+}
+
+dependencies {
+
+    //@RestController,   @RequestMapping
+    compile('org.springframework.boot:spring-boot-starter-web')
+    //@Entity , @EnableJpaRepositories
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    //hot spot
+    compile('org.springframework:springloaded:1.2.1.RELEASE')
+    //url rewrite serlvet
+    compile('org.ocpsoft.rewrite:rewrite-servlet:2.0.12.Final')
+    //mysql driver
+    compile('mysql:mysql-connector-java')
+
+    testCompile('com.h2database:h2')
+    testCompile 'junit:junit-dep:4.10'
+    testCompile 'org.springframework:spring-test'
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
