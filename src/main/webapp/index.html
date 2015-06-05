@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="example">
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>My project</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
+    <div ng-controller="StudentController" >
+        <form data-toggle="validator" id="sendMessageForm" method="post" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-xs-3 control-label">First Name:</label>
+                <div class="col-xs-6">
+                    <input  class="form-control"  type="text" ng-model="student.firstName" /><br/>
+                </div>
+            </div>
 
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Last Name:</label>
+                <div class="col-xs-6">
+                    <input  class="form-control" type="text" ng-model="student.lastName" /><br/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Year of study</label>
+                <div class="col-xs-6">
+                    <input  class="form-control" type="text" ng-model="student.yearOfStudy" /><br/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-9 col-xs-offset-3" >
+                    <input type="button" class="btn btn-default" type="submit" value="Submit" ng-click="saveStudent()" />
+                </div>
+            </div>
+        </form>
+        <!--<pre>firstName = {{student.firstName}}</pre>-->
+        <!--{{students}}-->
+    </div>
+
+    <script src="bower_components/angular/angular.min.js" ></script>
+    <script src="js/factory.js"></script>
+    <script src="js/controller.js"></script>
 </body>
 </html>
