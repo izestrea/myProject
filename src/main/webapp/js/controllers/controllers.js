@@ -10,12 +10,13 @@ app.controller('StudentController', function ($scope, AppFactory, ngTableParams)
     $scope.saveStudent = function () {
         AppFactory.registerStudent($scope.student)
             .success(function () {
-                console.log("salvat!");
+                console.log("save!");
                 $scope.student = {};
             })
             .error(function () {
-                console.log("eroare!");
+                console.log("error!");
             });
+        $scope.student = {};
     };
 
     $scope.studentTable = new ngTableParams({
@@ -33,7 +34,7 @@ app.controller('StudentController', function ($scope, AppFactory, ngTableParams)
                 $defer.resolve(data.content);
 
             }).error(function () {
-                alert("FAIL load data");
+                console.log("FAIL load data");
             });
         }
     });
