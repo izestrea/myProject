@@ -1,9 +1,7 @@
 package com.reigncode.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -17,6 +15,8 @@ public class Student  {
     private Long id;
     private String firstName;
     private String lastName;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern ="dd.MM.yyyy" )
     private Date birthday;
     private Long yearOfStudy;
 
@@ -27,6 +27,7 @@ public class Student  {
     public String getLastName() {
         return lastName;
     }
+
 
     public Date getBirthday() {
         return birthday;

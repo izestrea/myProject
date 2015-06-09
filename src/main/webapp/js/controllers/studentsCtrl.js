@@ -1,16 +1,16 @@
 /**
  * Created by user on 05.06.2015.
  */
-app.controller('StudentController', function ($scope, AppFactory, ngTableParams) {
+
+// create the controller and inject Angular's $scope
+app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams) {
     $scope.student = {};
-    //AppFactory.allStudents().success(function (data) {
-    //   $scope.allStudents = data.content;
-    //    alert($scope.allStudents);
-    //});
+
     $scope.saveStudent = function () {
         AppFactory.registerStudent($scope.student)
             .success(function () {
                 console.log("save!");
+                $scope.studentTable.reload();
                 $scope.student = {};
             })
             .error(function () {
@@ -21,7 +21,7 @@ app.controller('StudentController', function ($scope, AppFactory, ngTableParams)
 
     $scope.studentTable = new ngTableParams({
         page: 1,            // show first page
-        count: 5,         // count per page
+        count: 25,         // count per page
         sorting: {
             id: 'asc'     // initial sorting
         }
@@ -39,4 +39,19 @@ app.controller('StudentController', function ($scope, AppFactory, ngTableParams)
         }
     });
 
+    // function to submit the form after all validation has occurred
+    $scope.submitForm = function(isValid) {
+        scope.submitted = true;
+        // check to make sure the form is completely valid
+        if (isValid) {
+            alert('our form is amazing');
+        }
+    };
+
+    $scope.openDatePicker = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.opened = true;
+    };
 });

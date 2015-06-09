@@ -45,4 +45,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+
+        .state('students', {
+            url: '/students',
+            templateUrl: '/partials/students.html',
+            controller: 'studentsCtrl'
+        })
+    // use the HTML5 History API
+    //$locationProvider.html5Mode(true);
 })
