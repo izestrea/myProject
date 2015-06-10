@@ -20,6 +20,12 @@ public class Student  {
     private Date birthday;
     private Long yearOfStudy;
 
+    @ManyToOne
+    @JoinTable(name = "inst_stud",
+            joinColumns = {@JoinColumn(name = "stud_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "inst_id", referencedColumnName = "id")})
+    private Institution institution;
+
     public String getFirstName() {
         return firstName;
     }
@@ -59,5 +65,13 @@ public class Student  {
     public Long getId() {
 
         return id;
+    }
+
+    public Institution getInstitution() {
+        return institution;
+    }
+
+    public void setInstitution(Institution institution) {
+        this.institution = institution;
     }
 }
