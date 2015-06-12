@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Created by user on 03.06.2015.
  */
@@ -21,8 +23,8 @@ public class InstitutionsController {
     private InstitutionRepository institutionRepository;
 
     @RequestMapping(value = "/institutions", method = RequestMethod.GET)
-    public Page<Institution> getInstitutions(Pageable pageable){
-        return institutionRepository.findAll(pageable);
+    public List<Institution> getInstitutions(){
+        return institutionRepository.findAll();
     }
 
     @RequestMapping(value = "registerInstitution", method = RequestMethod.POST)

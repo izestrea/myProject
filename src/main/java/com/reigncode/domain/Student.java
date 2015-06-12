@@ -21,9 +21,7 @@ public class Student  {
     private Long yearOfStudy;
 
     @ManyToOne
-    @JoinTable(name = "inst_stud",
-            joinColumns = {@JoinColumn(name = "stud_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "inst_id", referencedColumnName = "id")})
+    @JoinColumn(name = "inst_id")
     private Institution institution;
 
     public String getFirstName() {

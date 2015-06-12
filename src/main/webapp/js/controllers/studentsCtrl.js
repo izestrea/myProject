@@ -7,7 +7,7 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams) {
     $scope.student = {};
 
     $scope.saveStudent = function () {
-        AppFactory.registerStudent($scope.student)
+        AppFactory.registerStudent($scope.student, $scope.institution.id)
             .success(function () {
                 console.log("save!");
                 $scope.studentTable.reload();
@@ -18,7 +18,7 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams) {
             });
         $scope.student = {};
     };
-
+    //table
     $scope.studentTable = new ngTableParams({
         page: 1,            // show first page
         count: 25,         // count per page
@@ -47,11 +47,27 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams) {
             alert('our form is amazing');
         }
     };
-
+    // data picker
     $scope.openDatePicker = function($event) {
         $event.preventDefault();
         $event.stopPropagation();
 
         $scope.opened = true;
     };
+    //institution dropdown list
+    AppFactory.allInstitutions().success(function (data) {
+        $scope.institutions = data;
+    })
+    //institution dropdown pageable
+    //$scope.selectInstitution = function (id) {
+    //    $scope.student.inst_id = id;
+    //    console.log(id);
+    //}
+    //delete student
+    $scope.deleteStudent = function (id) {
+        AppFactory.deleteStudent(id).success(function () {
+            console.log("student delete " + id);
+            $scope.studentTable.reload();
+        })
+    }
 });
