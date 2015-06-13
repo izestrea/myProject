@@ -70,4 +70,7 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams) {
             $scope.studentTable.reload();
         })
     }
+
+    //form+table+edit+save
+
 });

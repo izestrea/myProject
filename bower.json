@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "angular": "~1.4.0",
-    "ng-dropdown": "~1.0.1"
+    "ng-dropdown": "~1.0.1",
+    "angular-xeditable": "~0.1.9"
   }
 }

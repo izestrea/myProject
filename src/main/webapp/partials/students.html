@@ -75,19 +75,18 @@
             </div>
         </div>
         <!--STUDENT'S INSTITUTION-->
-        <div class="form-group"
-             ng-class="{ 'has-error' : userForm.inst_id.$invalid && !userForm.inst_id.$pristine  && submitted}">
-            <label class="col-xs-3 control-label">Institution:</label>
+        <!--<div class="form-group"-->
+        <!--ng-class="{ 'has-error' : userForm.inst_id.$invalid && !userForm.inst_id.$pristine  && submitted}">-->
+        <!--<label class="col-xs-3 control-label">Institution:</label>-->
 
-            <div class="col-xs-6">
-                <input name="inst_id" class="form-control" type="text" ng-model="institution.inst_id"/>
-                <!--<p ng-show="userForm.inst_id.$error.pattern && submitted" class="help-block">Institution</p>-->
-            </div>
-        </div>
-        <!--DROPDOWN LIST TESTING-->
+        <!--<div class="col-xs-6">-->
+        <!--<input name="inst_id" class="form-control" type="text" ng-model="institution.inst_id"/>-->
+        <!--&lt;!&ndash;<p ng-show="userForm.inst_id.$error.pattern && submitted" class="help-block">Institution</p>&ndash;&gt;-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--DROPDOWN LIST TESTING // STUDENT'S INSTITUTION-->
         <div class="form-group dropdown">
-            <label class="col-xs-3 control-label">Dropdown:</label>
-
+            <label class="col-xs-3 control-label">Institution:</label>
             <div class="col-xs-6">
                 <select class="form-control" ng-model="institution"
                         ng-options="institution.institutionName for institution in institutions">
@@ -114,9 +113,12 @@
                 <td data-title="'Birthday'">{{student.birthday | date: 'dd.MM.yyyy'}}</td>
                 <td data-title="'Institution'">{{student.institution.institutionName}}</td>
                 <td data-title="'Delete'"><input type="button" class="btn btn-default" type="submit" value="Delete"
-                                               ng-click="deleteStudent(student.id)"/></td>
+                                                 ng-click="deleteStudent(student.id)"/></td>
+                <td data-title="'Edit'"><input type="button" class="btn btn-default" type="submit" value="Edit"
+                                               ng-click=""/></td>
 
             </tr>
         </table>
     </div>
+
 </div>
