@@ -23,23 +23,23 @@ public class StudentsController {
     private InstitutionRepository institutionRepository;
 
     @RequestMapping(value = "/students", method = RequestMethod.GET)
-    public Page<Student> getStudents(Pageable pageable) {
+    private Page<Student> getStudents(Pageable pageable) {
         return studentRepository.findAll(pageable);
     }
 
     @RequestMapping(value = "/registerStudent/{inst_name}", method = RequestMethod.POST)
-    public void saveStudents(@RequestBody Student student, @PathVariable String inst_name){
+    private void saveStudents(@RequestBody Student student, @PathVariable String inst_name){
         student.setInstitution(institutionRepository.findByInstitutionName(inst_name));
         studentRepository.save(student);
     }
 
     @RequestMapping(value = "/deleteStudent/{st_id}", method = RequestMethod.DELETE)
-    public void deleteStudent(@PathVariable Long st_id){
+    private void deleteStudent(@PathVariable Long st_id){
         studentRepository.delete(st_id);
     }
 
     @RequestMapping(value = "/updateStudent/{st_id}", method = RequestMethod.POST)
-    public void updateStudent(@RequestBody Student student, @PathVariable Long st_id){
+    private void updateStudent(@RequestBody Student student, @PathVariable Long st_id){
         student.setId(st_id);
         studentRepository.save(student);
     }
