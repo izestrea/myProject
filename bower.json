@@ -19,6 +19,7 @@
   "dependencies": {
     "angular": "~1.4.0",
     "ng-dropdown": "~1.0.1",
-    "angular-xeditable": "~0.1.9"
+    "angular-xeditable": "~0.1.9",
+    "angularjs-toaster": "~0.4.14"
   }
 }

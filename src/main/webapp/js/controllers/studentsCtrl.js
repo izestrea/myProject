@@ -7,7 +7,7 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams) {
     $scope.student = {};
 
     $scope.saveStudent = function () {
-        AppFactory.registerStudent($scope.student, $scope.institution.id)
+        AppFactory.registerStudent($scope.student, $scope.institution)
             .success(function () {
                 console.log("save!");
                 $scope.studentTable.reload();
@@ -44,14 +44,13 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams) {
         scope.submitted = true;
         // check to make sure the form is completely valid
         if (isValid) {
-            alert('our form is amazing');
+            alert('form is validated');
         }
     };
     // data picker
     $scope.openDatePicker = function($event) {
         $event.preventDefault();
         $event.stopPropagation();
-
         $scope.opened = true;
     };
     //institution dropdown list
@@ -72,5 +71,16 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams) {
     }
 
     //form+table+edit+save
+    $scope.updateStudent = function (id) {
+        AppFactory.updateStudent(id).success(function () {
+            console.log("student update " + id);
+            $scope.studentTable.reload();
+        })
+    }
+    $scope.getStudent = function (data) {
+        $scope.student = data;
+        $scope.institution = data.institution.institutionName;
+        console.log(data);
+    }
 
 });

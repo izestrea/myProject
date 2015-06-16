@@ -23,8 +23,8 @@ public class InstitutionsController {
     private InstitutionRepository institutionRepository;
 
     @RequestMapping(value = "/institutions", method = RequestMethod.GET)
-    public List<Institution> getInstitutions(){
-        return institutionRepository.findAll();
+    public List<String> getInstitutions(){
+        return institutionRepository.allInstitutions();
     }
 
     @RequestMapping(value = "registerInstitution", method = RequestMethod.POST)

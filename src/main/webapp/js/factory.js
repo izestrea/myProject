@@ -18,8 +18,8 @@ app.factory('AppFactory', function ($http) {
         }
         return $http.get(url);
     };
-    factory.registerStudent = function (object, id) {
-        return $http.post('/api/registerStudent/' + id, object);
+    factory.registerStudent = function (object, inst_name) {
+        return $http.post('/api/registerStudent/' + inst_name, object);
     };
     //INSTITUTIONS
     factory.registerInstitution = function (object) {
