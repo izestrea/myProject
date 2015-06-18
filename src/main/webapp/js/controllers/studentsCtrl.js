@@ -3,7 +3,7 @@
  */
 
 // create the controller and inject Angular's $scope
-app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams, toaster) {
+app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams) {
     $scope.student = {};
 
     $scope.saveStudent = function () {
@@ -82,7 +82,7 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams, toas
         $scope.institution = data.institution.institutionName;
         console.log(data);
     }
-    $scope.pop = function(){
-        toaster.pop('success', "title", "text");
-    };
+    //$scope.pop = function(){
+    //    toaster.pop('success', "title", "text");
+    //};
 });
