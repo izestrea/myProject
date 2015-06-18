@@ -70,24 +70,26 @@
                 </select>
             </div>
         </div>
-        <!--SUBMIT-->
+        <!--SUBMIT + TOASTER-->
         <div class="form-group">
             <div class="col-xs-6 col-xs-offset-3" align="right">
-                <toaster-container toaster-options="{'time-out': 1000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
-                <input type="button" class="btn btn-default" type="submit" value="Submit"
-                       ng-click="saveStudent(); pop()"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-xs-6 col-xs-offset-3">
-        <!--<button ng-click="pop()">Show a Toaster</button>-->
                 <!-- NOTE: remove 'animation-class': 'toast-top-center' if you want it on the left top corner -->
-                <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
-                <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
-                <button class="btn btn-primary" ng-click="pop()">Show toasts</button>
-                <button class="btn btn-danger" ng-click="clear()">Clear toasts</button>
+                <input type="button" class="btn btn-default" type="submit" value="Submit"
+                       ng-click="saveStudent()"/>
+                <!--<input type="button" class="btn btn-danger" type="submit" value="Clear" ng-click="clear()" />-->
             </div>
         </div>
+        <!--TOASTER-->
+        <!--<div class="form-group">-->
+            <!--<div class="col-xs-6 col-xs-offset-3">-->
+        <!--&lt;!&ndash;<button ng-click="pop()">Show a Toaster</button>&ndash;&gt;-->
+                <!--&lt;!&ndash; NOTE: remove 'animation-class': 'toast-top-center' if you want it on the left top corner &ndash;&gt;-->
+                <!--<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>-->
+                <!--<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>-->
+                <!--<button class="btn btn-primary" ng-click="pop()">Show toasts</button>-->
+                <!--<button class="btn btn-danger" ng-click="clear()">Clear toasts</button>-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
     </form>
     <!--{{students}}-->
     <div class="table-responsive">
@@ -99,8 +101,10 @@
                 <td data-title="'Birthday'">{{studentData.birthday | date: 'dd.MM.yyyy'}}</td>
                 <td data-title="'Institution'">{{studentData.institution.institutionName}}</td>
                 <td data-title="'Edit'" style="white-space: nowrap">
-                        <button class="btn btn-primary" ng-click="getStudent(studentData)">Edit</button>
-                        <button class="btn btn-danger" ng-click="deleteStudent(studentData.id)">Del</button>
+                        <button class="btn btn-primary" ng-click="getStudent(studentData)"><i
+                                class="glyphicon glyphicon-pencil"></i></button>
+                        <button class="btn btn-danger" ng-click="deleteStudent(studentData.id)"><i
+                                class="glyphicon glyphicon-remove"></i></button>
                 </td>
             </tr>
         </table>

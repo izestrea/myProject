@@ -12,9 +12,11 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams, toas
                 console.log("saved!");
                 $scope.studentTable.reload();
                 $scope.student = {};
+                toaster.pop('success', "", "Student adaogat cu succes!");
             })
             .error(function () {
                 console.log("error!");
+                toaster.pop('error', "", "Eroare");
             });
         $scope.student = {};
     };
@@ -82,9 +84,6 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams, toas
         $scope.institution = data.institution.institutionName;
         console.log(data);
     }
-    $scope.pop = function(){
-        toaster.pop('success', "", "Student adaogat cu succes!");
-    };
     $scope.clear = function(){
         toaster.clear();
     };
