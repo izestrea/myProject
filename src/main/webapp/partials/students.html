@@ -77,7 +77,16 @@
                        ng-click="saveStudent()"/>
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-xs-6 col-xs-offset-3">
         <!--<button ng-click="pop()">Show a Toaster</button>-->
+                <!-- NOTE: remove 'animation-class': 'toast-top-center' if you want it on the left top corner -->
+                <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+                <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+                <button class="btn btn-primary" ng-click="pop()">Show toasts</button>
+                <button class="btn btn-danger" ng-click="clear()">Clear toasts</button>
+            </div>
+        </div>
     </form>
     <!--{{students}}-->
     <div class="table-responsive">
@@ -91,11 +100,8 @@
                 <td data-title="'Edit'" style="white-space: nowrap">
                         <button class="btn btn-primary" ng-click="getStudent(studentData)">Edit</button>
                         <button class="btn btn-danger" ng-click="deleteStudent(student.id)">Del</button>
-
                 </td>
-
             </tr>
         </table>
     </div>
-
 </div>
