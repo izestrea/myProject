@@ -9,7 +9,7 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams, toas
     $scope.saveStudent = function () {
         AppFactory.registerStudent($scope.student, $scope.institution)
             .success(function () {
-                console.log("save!");
+                console.log("saved!");
                 $scope.studentTable.reload();
                 $scope.student = {};
             })
@@ -83,7 +83,7 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams, toas
         console.log(data);
     }
     $scope.pop = function(){
-        toaster.pop('success', "title", "text");
+        toaster.pop('success', "", "Student adaogat cu succes!");
     };
     $scope.clear = function(){
         toaster.clear();

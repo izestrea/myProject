@@ -73,8 +73,9 @@
         <!--SUBMIT-->
         <div class="form-group">
             <div class="col-xs-6 col-xs-offset-3" align="right">
+                <toaster-container toaster-options="{'time-out': 1000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
                 <input type="button" class="btn btn-default" type="submit" value="Submit"
-                       ng-click="saveStudent()"/>
+                       ng-click="saveStudent(); pop()"/>
             </div>
         </div>
         <div class="form-group">
@@ -99,7 +100,7 @@
                 <td data-title="'Institution'">{{studentData.institution.institutionName}}</td>
                 <td data-title="'Edit'" style="white-space: nowrap">
                         <button class="btn btn-primary" ng-click="getStudent(studentData)">Edit</button>
-                        <button class="btn btn-danger" ng-click="deleteStudent(student.id)">Del</button>
+                        <button class="btn btn-danger" ng-click="deleteStudent(studentData.id)">Del</button>
                 </td>
             </tr>
         </table>
