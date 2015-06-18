@@ -2,31 +2,24 @@
 
 <div class="jumbotron text-center">
     <h1>Students</h1>
-
     <p>This page show all <span class="text-danger">Students</span>.</p>
 </div>
 
 <div ui-view></div>
 <div ng-controller="studentsCtrl">
     <!-- FORM -->
-    <!-- pass in the variable if our form is valid or invalid -->
-    <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
     <form name="userForm" data-toggle="validator" id="sendMessageForm" method="post" class="form-horizontal"
           ng-submit="submitForm(userForm.$valid)" novalidate>
         <!--STUDENT'S FIRST NAME-->
         <div class="form-group"
              ng-class="{ 'has-error' : userForm.firstName.$invalid && !userForm.firstName.$pristine && submitted}">
             <label class="col-xs-3 control-label">First Name:</label>
-
             <div class="col-xs-6">
                 <input name="firstName" class="form-control" type="text" ng-model="student.firstName"
                        required ng-minlength="3"/>
-
                 <p ng-show="userForm.firstName.$invalid && !userForm.firstName.$pristine && submitted"
                    class="help-block">Student's
                     first name is required and > 3 letters.</p>
-                <!--<p ng-show="userForm.firstName.$error.minlength" class="help-block">Student's first name is too-->
-                <!--short.</p>-->
             </div>
         </div>
         <!--STUDENT'S LAST NAME-->
@@ -37,18 +30,14 @@
             <div class="col-xs-6">
                 <input name="lastName" class="form-control" type="text" ng-model="student.lastName"
                        required ng-minlength="3"/>
-
                 <p ng-show="userForm.lastName.$invalid && !userForm.lastName.$pristine && submitted" class="help-block">
                     Student's
                     first name is required and > 3 letters.</p>
-                <!--<p ng-show="userForm.lastName.$error.minlength" class="help-block">Student's first name is too-->
-                <!--short.</p>-->
             </div>
         </div>
         <!--STUDENT'S BIRTHDAY-->
         <div class="form-group">
             <label class="col-xs-3 control-label">Birthday:</label>
-
             <div class="col-xs-6">
                 <p class="input-group">
                     <input type="text" class="form-control" datepicker-popup="dd.MM.yyyy" ng-model="student.birthday"
@@ -65,29 +54,16 @@
         <div class="form-group"
              ng-class="{ 'has-error' : userForm.year.$invalid && !userForm.year.$pristine  && submitted}">
             <label class="col-xs-3 control-label">Year of study:</label>
-
             <div class="col-xs-6">
                 <input name="year" class="form-control" type="text" ng-model="student.yearOfStudy"
                        required ng-pattern="/^[0-9]{1,7}$/" placeholder="Year"/>
-
                 <p ng-show="userForm.year.$error.pattern && submitted" class="help-block">Year of study must be a
                     number.</p>
             </div>
         </div>
-        <!--STUDENT'S INSTITUTION-->
-        <!--<div class="form-group"-->
-        <!--ng-class="{ 'has-error' : userForm.inst_id.$invalid && !userForm.inst_id.$pristine  && submitted}">-->
-        <!--<label class="col-xs-3 control-label">Institution:</label>-->
-
-        <!--<div class="col-xs-6">-->
-        <!--<input name="inst_id" class="form-control" type="text" ng-model="institution.inst_id"/>-->
-        <!--&lt;!&ndash;<p ng-show="userForm.inst_id.$error.pattern && submitted" class="help-block">Institution</p>&ndash;&gt;-->
-        <!--</div>-->
-        <!--</div>-->
         <!--DROPDOWN LIST TESTING // STUDENT'S INSTITUTION-->
         <div class="form-group dropdown">
             <label class="col-xs-3 control-label">Institution:</label>
-
             <div class="col-xs-6">
                 <select class="form-control" ng-model="institution"
                         ng-options="institution for institution in institutions">
@@ -99,11 +75,10 @@
             <div class="col-xs-6 col-xs-offset-3" align="right">
                 <input type="button" class="btn btn-default" type="submit" value="Submit"
                        ng-click="saveStudent()"/>
-                <!--input argument: ng-disabled="userForm.$invalid"-->
             </div>
         </div>
+        <button ng-click="pop()">Show a Toaster</button>
     </form>
-    <!--<pre>firstName = {{student.firstName}}</pre>-->
     <!--{{students}}-->
     <div class="table-responsive">
         <table ng-table="studentTable" class="table table-striped table-bordered table-hover">
@@ -113,23 +88,7 @@
                 <td data-title="'Year of study'">{{studentData.yearOfStudy}}</td>
                 <td data-title="'Birthday'">{{studentData.birthday | date: 'dd.MM.yyyy'}}</td>
                 <td data-title="'Institution'">{{studentData.institution.institutionName}}</td>
-                <!--<td data-title="'Delete'"><input type="button" class="btn btn-default" type="submit" value="Delete"-->
-                                                 <!--ng-click="deleteStudent(student.id)"/></td>-->
-                <!--<td data-title="'Edit'"><input type="button" class="btn btn-default" type="submit" value="Edit"-->
-                <!--ng-click="updateStudent(student.id)"/></td>-->
                 <td data-title="'Edit'" style="white-space: nowrap">
-                    <!-- form -->
-                    <form editable-form name="rowform" onbeforesave="updateStudent(student.id)"
-                          ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == student">
-                        <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
-                            Save
-                        </button>
-                        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()"
-                                class="btn btn-default">
-                            Cancel
-                        </button>
-                    </form>
-                    <div class="buttons" ng-show="!rowform.$visible">
                         <button class="btn btn-primary" ng-click="getStudent(studentData)">Edit</button>
                         <button class="btn btn-danger" ng-click="deleteStudent(student.id)">Del</button>
                     </div>
