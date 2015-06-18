@@ -57,11 +57,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: '/partials/institutions.html',
             controller: 'institutionsCtrl'
         })
-        .state('editable-row', {
-            url: '/editable-row.html',
-            templateUrl: '/partials/editable-row.html',
-            controller: 'EditableRowCtrl'
-        })
-    // use the HTML5 History API
-    //$locationProvider.html5Mode(true);
+        //.state('editable-row', {
+        //    url: '/editable-row.html',
+        //    templateUrl: '/partials/editable-row.html',
+        //    controller: 'EditableRowCtrl'
+        //})
 })
