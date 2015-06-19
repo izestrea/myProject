@@ -5,10 +5,7 @@ import com.reigncode.repository.InstitutionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,5 +32,10 @@ public class InstitutionsController {
     @RequestMapping(value = "/registerInstitution", method = RequestMethod.POST)
     public void saveInstitutions(@RequestBody Institution institution){
         institutionRepository.save(institution);
+    }
+
+    @RequestMapping(value = "/deleteInstitution/{inst_id}", method = RequestMethod.DELETE)
+    public void deleteInstitution(@PathVariable Long inst_id){
+        institutionRepository.delete(inst_id);
     }
 }

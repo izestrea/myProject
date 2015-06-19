@@ -41,6 +41,9 @@ app.factory('AppFactory', function ($http) {
     factory.deleteStudent = function (id) {
         return $http.delete('/api/deleteStudent/' + id);
     }
+    factory.deleteInstitution = function (id) {
+        return $http.delete('/api/deleteInstitution/' + id);
+    }
 
     return factory;
 });

@@ -36,4 +36,14 @@ app.controller('institutionsCtrl', function ($scope, AppFactory, ngTableParams) 
             });
         }
     });
+    $scope.deleteInstitution = function (id) {
+        AppFactory.deleteInstitution(id).success(function () {
+            console.log("institution delete " + id);
+            $scope.institutionTable.reload();
+        })
+    }
+    $scope.getInstitution = function (data) {
+        $scope.institution = data;
+        console.log(data);
+    }
 });
