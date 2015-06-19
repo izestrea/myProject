@@ -25,17 +25,16 @@ app.factory('AppFactory', function ($http) {
     factory.registerInstitution = function (object) {
         return $http.post('/api/registerInstitution', object);
     };
-    //factory.allInstitutions = function (params) {
-    //    var url = '/api/institutions?size=' + params.count();
-    //    //sort by id
-    //    for (var key in params.sorting()) {
-    //        url = url.concat('&sort=' + key + ',' + params.sorting()[key]);
-    //    }
-    //    if (params.page() >= 1) {
-    //        url = url.concat('&page=' + (params.page() - 1));
-    //    }
-    //    return $http.get(url);
-    //};
+    factory.allInstitutionsTable = function (params) {
+        var url = '/api/institutionView?size=' + params.count();
+        for (var key in params.sorting()) {
+            url = url.concat('&sort=' + key + ',' + params.sorting()[key]);
+        }
+        if (params.page() >= 1) {
+            url = url.concat('&page=' + (params.page() - 1));
+        }
+        return $http.get(url);
+    };
     factory.allInstitutions = function () {
         return $http.get('/api/institutions');
     };

@@ -27,12 +27,12 @@ public class InstitutionsController {
         return institutionRepository.allInstitutions();
     }
 
-    @RequestMapping(value = "/institutionTable", method = RequestMethod.GET)
-    public Page<Institution> allInstitutions(Pageable pageable) {
+    @RequestMapping(value = "/institutionView", method = RequestMethod.GET)
+    public Page<Institution> getAllInstitutions(Pageable pageable) {
         return institutionRepository.findAll(pageable);
     }
 
-    @RequestMapping(value = "registerInstitution", method = RequestMethod.POST)
+    @RequestMapping(value = "/registerInstitution", method = RequestMethod.POST)
     public void saveInstitutions(@RequestBody Institution institution){
         institutionRepository.save(institution);
     }

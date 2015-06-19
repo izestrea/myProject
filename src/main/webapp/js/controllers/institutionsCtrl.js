@@ -8,7 +8,7 @@ app.controller('institutionsCtrl', function ($scope, AppFactory, ngTableParams) 
         AppFactory.registerInstitution($scope.institution)
             .success(function () {
                 console.log("save!");
-                //$scope.institutionTable.reload();
+                $scope.institutionTable.reload();
                 $scope.institution = {};
             })
             .error(function () {
@@ -25,7 +25,7 @@ app.controller('institutionsCtrl', function ($scope, AppFactory, ngTableParams) 
         }
     }, {
         getData: function ($defer, params) {
-            AppFactory.allInstitutions(params).success(function (data) {
+            AppFactory.allInstitutionsTable(params).success(function (data) {
                 params.total(data.totalElements);
                 params.page(data.number + 1);
                 // set new data
