@@ -15,7 +15,7 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams, toas
                 toaster.pop('success', "", "Student adaogat cu succes!");
             })
             .error(function () {
-                console.log("error!");
+                console.log("error! data is not saved!");
                 toaster.pop('error', "", "Eroare");
             });
         $scope.student = {};
@@ -50,11 +50,11 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams, toas
         }
     };
     // data picker
-    $scope.openDatePicker = function($event) {
-        $event.preventDefault();
-        $event.stopPropagation();
-        $scope.opened = true;
-    };
+    //$scope.openDatePicker = function($event) {
+    //    $event.preventDefault();
+    //    $event.stopPropagation();
+    //    $scope.opened = true;
+    //};
     //institution dropdown list
     AppFactory.allInstitutions().success(function (data) {
         $scope.institutions = data;

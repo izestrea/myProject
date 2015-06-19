@@ -16,7 +16,7 @@
             <label class="col-xs-3 control-label">Inst. Name:</label>
             <div class="col-xs-6">
                 <input name="institutionName" class="form-control" type="text" ng-model="institution.institutionName"
-                       required ng-minlength="3"/>
+                       required ng-minlength="3" placeholder="Add new Institution"/>
                 <p ng-show="userForm.institutionName.$invalid && !userForm.institutionName.$pristine && submitted"
                    class="help-block">Institution's
                     name is required and > 3 letters.</p>
@@ -38,11 +38,11 @@
         <table ng-table="institutionTable" class="table table-striped table-bordered table-hover">
             <tr ng-repeat="institutionData in $data">
                 <td data-title="'ID'" class="col-xs-2">{{institutionData.id}}</td>
-                <td data-title="'Name'" class="col-xs-7">{{institutionData.institutionName}}</td>
-                <td data-title="'Edit'" style="white-space: nowrap" class="col-xs-5">
-                    <button class="btn btn-primary" ng-click="getInstitution(institutionData)"><i
+                <td data-title="'Name'" class="col-xs-8">{{institutionData.institutionName}}</td>
+                <td data-title="'Edit'" style="white-space: nowrap" class="col-xs-2">
+                    <button class="btn btn-primary btn-xs" ng-click="getInstitution(institutionData)"><i
                             class="glyphicon glyphicon-pencil"></i></button>
-                    <button class="btn btn-danger" ng-click="deleteInstitution(institutionData.id)"><i
+                    <button class="btn btn-danger btn-xs" ng-click="deleteInstitution(institutionData.id)"><i
                             class="glyphicon glyphicon-remove"></i></button>
                 </td>
             </tr>
