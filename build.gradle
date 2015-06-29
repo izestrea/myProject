@@ -16,12 +16,8 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
-apply plugin: 'war'
+//apply plugin: 'war'
 
-war {
-    baseName = 'myapp'
-    version =  '0.0.1'
-}
 idea {
     module {
         inheritOutputDirs = false
@@ -37,37 +33,34 @@ jar {
 repositories {
     mavenLocal()
     mavenCentral()
+    //    war
     jcenter()
     maven { url "https://repo.spring.io/libs-release" }
-//    maven { url "https://repo.spring.io/libs-snapshot" }
 }
 
-configurations {
-    providedRuntime
-}
+//war {
+//    baseName = 'myProject'
+//    version =  '0.0.1'
+//}
 
 dependencies {
-
     //@RestController,   @RequestMapping
     compile('org.springframework.boot:spring-boot-starter-web')
-    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
     //@Entity , @EnableJpaRepositories
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    //hot spot
-    compile('org.springframework:springloaded:1.2.1.RELEASE')
-    //url rewrite serlvet
-    compile('org.ocpsoft.rewrite:rewrite-servlet:2.0.12.Final')
     //mysql driver
     compile('mysql:mysql-connector-java')
-    //spring security
-    compile 'org.springframework.security:spring-security-web:4.0.1.RELEASE'
-
-    testCompile('com.h2database:h2')
-    testCompile 'junit:junit-dep:4.10'
-    testCompile 'org.springframework:spring-test'
-
+    //war
+    compile("org.springframework.boot:spring-boot-starter-web")
+    //war
+//    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
+
+//war
+//configurations {
+//    providedRuntime
+//}
