@@ -2,6 +2,7 @@
 
 <div class="jumbotron text-center">
     <h1>Students</h1>
+
     <p>This page show all <span class="text-danger">Students</span>.</p>
 </div>
 
@@ -14,9 +15,11 @@
         <div class="form-group"
              ng-class="{ 'has-error' : userForm.firstName.$invalid && !userForm.firstName.$pristine && submitted}">
             <label class="col-xs-3 control-label">FName:</label>
+
             <div class="col-xs-6">
                 <input name="firstName" class="form-control" type="text" ng-model="student.firstName"
                        required ng-minlength="3" placeholder="Student first name"/>
+
                 <p ng-show="userForm.firstName.$invalid && !userForm.firstName.$pristine && submitted"
                    class="help-block">Student's
                     first name is required and > 3 letters.</p>
@@ -30,6 +33,7 @@
             <div class="col-xs-6">
                 <input name="lastName" class="form-control" type="text" ng-model="student.lastName"
                        required ng-minlength="3" placeholder="Student last name"/>
+
                 <p ng-show="userForm.lastName.$invalid && !userForm.lastName.$pristine && submitted" class="help-block">
                     Student's
                     first name is required and > 3 letters.</p>
@@ -37,38 +41,43 @@
         </div>
         <!--STUDENT'S BIRTHDAY-->
         <!--<div class="form-group">-->
-            <!--<label class="col-xs-3 control-label">Birthday:</label>-->
-            <!--<div class="col-xs-6">-->
-                <!--<p class="input-group">-->
-                    <!--<input type="text" class="form-control" datepicker-popup="dd.MM.yyyy" ng-model="student.birthday"-->
-                           <!--is-open="opened" required ng-disabled="true"-->
-                           <!--close-text="Close"/>-->
-              <!--<span class="input-group-btn">-->
-                <!--<button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i-->
-                        <!--class="glyphicon glyphicon-calendar"></i></button>-->
-              <!--</span>-->
-                <!--</p>-->
-            <!--</div>-->
+        <!--<label class="col-xs-3 control-label">Birthday:</label>-->
+        <!--<div class="col-xs-6">-->
+        <!--<p class="input-group">-->
+        <!--<input type="text" class="form-control" datepicker-popup="dd.MM.yyyy" ng-model="student.birthday"-->
+        <!--is-open="opened" required ng-disabled="true"-->
+        <!--close-text="Close"/>-->
+        <!--<span class="input-group-btn">-->
+        <!--<button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i-->
+        <!--class="glyphicon glyphicon-calendar"></i></button>-->
+        <!--</span>-->
+        <!--</p>-->
+        <!--</div>-->
         <!--</div>-->
         <!--STUDENT'S BIRTHDAY 720kb.datepicker-->
         <div class="form-group">
             <label class="col-xs-3 control-label">Birthday:</label>
+
             <div class="col-xs-6">
-                <datepicker date-format="yyyy-MM-dd" selector="form-control">
+                <datepickers date-format="yyyy-MM-dd" selector="form-control">
                     <div class="input-group">
-                        <input type="text" class="form-control" ng-model="student.birthday" placeholder="Choose a date"/>
-                        <span class="input-group-addon" style="cursor: pointer"><i class="fa fa-lg fa-calendar"></i></span>
+                        <input type="text" class="form-control" ng-model="student.birthday"
+                               placeholder="Choose a date"/>
+                        <span class="input-group-addon" style="cursor: pointer"><i
+                                class="fa fa-lg fa-calendar"></i></span>
                     </div>
-                </datepicker>
+                </datepickers>
             </div>
         </div>
         <!--STUDENT'S YEAR OF STUDY-->
         <div class="form-group"
              ng-class="{ 'has-error' : userForm.year.$invalid && !userForm.year.$pristine  && submitted}">
             <label class="col-xs-3 control-label">YearStudy:</label>
+
             <div class="col-xs-6">
                 <input name="year" class="form-control" type="text" ng-model="student.yearOfStudy"
                        required ng-pattern="/^[0-9]{1,7}$/" placeholder="Student year of study"/>
+
                 <p ng-show="userForm.year.$error.pattern && submitted" class="help-block">Year of study must be a
                     number.</p>
             </div>
@@ -76,6 +85,7 @@
         <!--DROPDOWN LIST TESTING // STUDENT'S INSTITUTION-->
         <div class="form-group dropdown">
             <label class="col-xs-3 control-label">Institution:</label>
+
             <div class="col-xs-6">
                 <select class="form-control" ng-model="institution"
                         ng-options="institution for institution in institutions">
@@ -102,12 +112,15 @@
                 <td data-title="'Birthday'">{{studentData.birthday | date: 'dd.MM.yyyy'}}</td>
                 <td data-title="'Institution'">{{studentData.institution.institutionName}}</td>
                 <td data-title="'Edit'" style="white-space: nowrap">
-                        <button class="btn btn-primary btn-xs" ng-click="getStudent(studentData)"><i
-                                class="glyphicon glyphicon-pencil"></i></button>
-                        <button class="btn btn-danger btn-xs" ng-click="deleteStudent(studentData.id)"><i
-                                class="glyphicon glyphicon-remove"></i></button>
+                    <button class="btn btn-primary btn-xs" ng-click="getStudent(studentData)"><i
+                            class="glyphicon glyphicon-pencil"></i></button>
+                    <button class="btn btn-danger btn-xs" ng-click="deleteStudent(studentData.id)"
+                            >
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </button>
                 </td>
             </tr>
         </table>
+        <button ng-click="testModal()">Modal</button>
     </div>
 </div>

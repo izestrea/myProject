@@ -3,9 +3,8 @@
  */
 
 // create the controller and inject Angular's $scope
-app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams, toaster) {
+app.controller('studentsCtrl', function ($scope,  $modal, $log, AppFactory, ngTableParams, toaster) {
     $scope.student = {};
-
     $scope.saveStudent = function () {
         AppFactory.registerStudent($scope.student, $scope.institution)
             .success(function () {
@@ -20,7 +19,6 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams, toas
             });
         $scope.student = {};
     };
-    //table
     $scope.studentTable = new ngTableParams({
         page: 1,            // show first page
         count: 25,         // count per page
@@ -40,30 +38,18 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams, toas
             });
         }
     });
-
     // function to submit the form after all validation has occurred
-    $scope.submitForm = function(isValid) {
+    $scope.submitForm = function (isValid) {
         scope.submitted = true;
         // check to make sure the form is completely valid
         if (isValid) {
             alert('form is validated');
         }
     };
-    // data picker
-    //$scope.openDatePicker = function($event) {
-    //    $event.preventDefault();
-    //    $event.stopPropagation();
-    //    $scope.opened = true;
-    //};
-    //institution dropdown list
+   //institution dropdown list
     AppFactory.allInstitutions().success(function (data) {
         $scope.institutions = data;
     })
-    //institution dropdown pageable
-    //$scope.selectInstitution = function (id) {
-    //    $scope.student.inst_id = id;
-    //    console.log(id);
-    //}
     //delete student
     $scope.deleteStudent = function (id) {
         AppFactory.deleteStudent(id).success(function () {
@@ -71,7 +57,6 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams, toas
             $scope.studentTable.reload();
         })
     }
-
     //form+table+edit+save
     $scope.updateStudent = function (id) {
         AppFactory.updateStudent(id).success(function () {
@@ -84,7 +69,49 @@ app.controller('studentsCtrl', function ($scope, AppFactory, ngTableParams, toas
         $scope.institution = data.institution.institutionName;
         console.log(data);
     }
-    $scope.clear = function(){
+    $scope.clear = function () {
         toaster.clear();
     };
+    //modal
+    app.config(function ($modalProvider) {
+        angular.extend($modalProvider.defaults, {
+            html: true
+        });
+    });
+    $scope.animationsEnabled = true;
+    $scope.testModal = function () {
+        $modal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'partials/stmodal.html',
+            size: 'sm',
+            backdrop: true,
+            keyboard: true,
+            modalFade: true,
+            windowClass: 'modal',
+            //controller: function ($scope, $modalInstance, $log) {
+            //    $scope.ok = function () {
+            //        $log.log('Submiting user info.');
+            //        $modalInstance.dismiss('cancel');
+            //    }
+            //    $scope.cancel = function () {
+            //        $modalInstance.dismiss('cancel');
+            //    };
+            //}
+        });
+        $scope.close = function () {
+            $modalInstance.close("Someone Closed Me");
+        };
+        $scope.ok = function () {
+            $modalInstance.close();
+        };
+    };
+
+        //modalInstance.result.then(function (selectedItem) {
+        //    $scope.selected = selectedItem;
+        //}, function () {
+        //    $log.info('Modal dismissed at: ' + new Date());
+        //});
+        //$scope.toggleAnimation = function () {
+        //    $scope.animationsEnabled = !$scope.animationsEnabled;
+        //};
 });

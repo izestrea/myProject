@@ -21,6 +21,8 @@
     "ng-dropdown": "~1.0.1",
     "angular-xeditable": "~0.1.9",
     "angularjs-toaster": "~0.4.14",
-    "angularjs-datepicker": "~0.2.5"
+    "angularjs-datepicker": "~0.2.5",
+    "angular-strap": "~2.2.4",
+    "angular-motion": "~0.4.2"
   }
 }
