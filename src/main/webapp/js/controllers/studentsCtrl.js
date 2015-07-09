@@ -3,7 +3,7 @@
  */
 
 // create the controller and inject Angular's $scope
-app.controller('studentsCtrl', function ($scope,  $modal, $log, AppFactory, ngTableParams, toaster) {
+app.controller('studentsCtrl', function ($scope, $modal, $log, AppFactory, ngTableParams, toaster) {
     $scope.student = {};
     $scope.saveStudent = function () {
         AppFactory.registerStudent($scope.student, $scope.institution)
@@ -80,7 +80,7 @@ app.controller('studentsCtrl', function ($scope,  $modal, $log, AppFactory, ngTa
     });
     $scope.animationsEnabled = true;
     $scope.testModal = function () {
-        $modal.open({
+        var modalInstance = $modal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'partials/stmodal.html',
             size: 'sm',
@@ -88,30 +88,17 @@ app.controller('studentsCtrl', function ($scope,  $modal, $log, AppFactory, ngTa
             keyboard: true,
             modalFade: true,
             windowClass: 'modal',
-            //controller: function ($scope, $modalInstance, $log) {
-            //    $scope.ok = function () {
-            //        $log.log('Submiting user info.');
-            //        $modalInstance.dismiss('cancel');
-            //    }
-            //    $scope.cancel = function () {
-            //        $modalInstance.dismiss('cancel');
-            //    };
-            //}
+            controller: 'modalCtrl'
         });
-        $scope.close = function () {
-            $modalInstance.close("Someone Closed Me");
-        };
-        $scope.ok = function () {
-            $modalInstance.close();
-        };
+
+    };
+});
+app.controller('modalCtrl', function ($scope, $modalInstance) {
+    $scope.ok = function () {
+        $modalInstance.close('Ok');
     };
 
-        //modalInstance.result.then(function (selectedItem) {
-        //    $scope.selected = selectedItem;
-        //}, function () {
-        //    $log.info('Modal dismissed at: ' + new Date());
-        //});
-        //$scope.toggleAnimation = function () {
-        //    $scope.animationsEnabled = !$scope.animationsEnabled;
-        //};
-});
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+})
