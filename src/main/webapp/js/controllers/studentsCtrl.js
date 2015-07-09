@@ -79,7 +79,7 @@ app.controller('studentsCtrl', function ($scope, $modal, $log, AppFactory, ngTab
         });
     });
     $scope.animationsEnabled = true;
-    $scope.testModal = function () {
+    $scope.testModal = function (id) {
         var modalInstance = $modal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'partials/stmodal.html',
@@ -89,15 +89,21 @@ app.controller('studentsCtrl', function ($scope, $modal, $log, AppFactory, ngTab
             modalFade: true,
             windowClass: 'modal',
             controller: 'modalCtrl'
+        }).result.then(function () {
+            AppFactory.deleteStudent(id).success(function () {
+                console.log("student delete " + id);
+                $scope.studentTable.reload();
+            })
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
         });
-
     };
 });
+//modal controller
 app.controller('modalCtrl', function ($scope, $modalInstance) {
     $scope.ok = function () {
-        $modalInstance.close('Ok');
+        $modalInstance.close();
     };
-
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };

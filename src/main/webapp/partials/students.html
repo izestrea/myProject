@@ -112,15 +112,15 @@
                 <td data-title="'Birthday'">{{studentData.birthday | date: 'dd.MM.yyyy'}}</td>
                 <td data-title="'Institution'">{{studentData.institution.institutionName}}</td>
                 <td data-title="'Edit'" style="white-space: nowrap">
-                    <button class="btn btn-primary btn-xs" ng-click="getStudent(studentData)"><i
-                            class="glyphicon glyphicon-pencil"></i></button>
-                    <button class="btn btn-danger btn-xs" ng-click="deleteStudent(studentData.id)"
-                            >
+                    <button class="btn btn-primary btn-xs" ng-click="getStudent(studentData)">
+                        <i class="glyphicon glyphicon-pencil"></i></button>
+                    <!--<button class="btn btn-danger btn-xs" ng-click="deleteStudent(studentData.id)">-->
+                    <button class="btn btn-danger btn-xs" ng-click="testModal(studentData.id)">
                         <i class="glyphicon glyphicon-remove"></i>
                     </button>
                 </td>
             </tr>
         </table>
     </div>
-    <button ng-click="testModal()">Modal</button>
+    <!--<button ng-click="testModal()">Modal</button>-->
 </div>
