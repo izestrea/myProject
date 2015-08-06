@@ -1,6 +1,7 @@
 package com.reigncode.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -19,10 +20,14 @@ public class Student  {
     @DateTimeFormat(pattern ="dd.MM.yyyy" )
     private Date birthday;
     private Long yearOfStudy;
-
+    // Student -> Institution
     @ManyToOne
     @JoinColumn(name = "inst_id")
     private Institution institution;
+    // Student -> Facultate
+    @ManyToOne
+    @JoinColumn(name = "fac_id")
+    private Facultate facultate;
 
     public String getFirstName() {
         return firstName;
@@ -64,12 +69,20 @@ public class Student  {
 
         return id;
     }
-
+// Student -> Institution
     public Institution getInstitution() {
         return institution;
     }
 
     public void setInstitution(Institution institution) {
         this.institution = institution;
+    }
+    // Student -> Facultate
+    public Facultate getFacultate() {
+        return facultate;
+    }
+
+    public void setFacultate(Facultate facultate) {
+        this.facultate = facultate;
     }
 }

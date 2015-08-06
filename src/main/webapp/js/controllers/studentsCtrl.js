@@ -16,7 +16,7 @@ app.controller('studentsCtrl', function ($scope, $modal, $log, AppFactory, ngTab
             .error(function () {
                 console.log("error! data is not saved!");
                 toaster.pop('error', "", "Eroare");
-            });
+            })
         $scope.student = {};
     };
     $scope.studentTable = new ngTableParams({

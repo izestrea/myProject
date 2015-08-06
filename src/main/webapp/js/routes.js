@@ -15,6 +15,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/home',
             templateUrl: '/partials/home.html'
         })
+        .state('facultati', {
+            url: '/facultati',
+            templateUrl: '/partials/facultati.html'
+        })
 
         // nested list with custom controller
         .state('home.list', {

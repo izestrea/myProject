@@ -1,0 +1,57 @@
+<!-- partials/facultati.html -->
+
+<div class="jumbotron text-center">
+    <h1>Facultati</h1>
+
+    <p>Inregistrarea <span class="text-danger">Facultatilor</span>.</p>
+</div>
+
+<div ui-view></div>
+<div ng-controller="facultateCtrl">
+    <form name="userForm" data-toggle="validator" id="sendMessageForm" method="post" class="form-horizontal  col-sm-6"
+          ng-submit="submitForm(userForm.$valid)" novalidate class="col-sm-6">
+        <div class="form-group dropdown">
+            <label class="col-xs-3 control-label">Institutia:</label>
+            <div class="col-xs-6">
+                <select class="form-control" ng-model="institution"
+                        ng-options="institution for institution in institutions">
+                    <option value='' disabled selected style='display:none;'>Selecteaza institutia</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group"
+             ng-class="{ 'has-error' : userForm.numeFacultate.$invalid && !userForm.numeFacultate.$pristine && submitted}">
+            <label class="col-xs-3 control-label">Nume Facultate:</label>
+            <div class="col-xs-6">
+                <input name="numeFacultate" class="form-control" type="text" ng-model="facultate.numeFacultate"
+                       required ng-minlength="3" placeholder="Adaoga Facultate"/>
+                <p ng-show="userForm.numeFacultate.$invalid && !userForm.numeFacultate.$pristine && submitted"
+                   class="help-block">Numele Facultatii e cimp obligatoriu si trebuie sa contina> 3 litere.</p>
+            </div>
+        </div>
+        <!--SUBMIT-->
+        <div class="form-group" >
+            <div class="col-xs-6 col-xs-offset-3" align="right">
+                <input type="button" class="btn btn-default" type="submit" value="Submit"
+                       ng-click="saveFacultate()"/>
+                <!--input argument: ng-disabled="userForm.$invalid"-->
+            </div>
+        </div>
+    </form>
+
+    <div class="table-responsive"  class="col-sm-6">
+        <table ng-table="facultateTable" class="table table-striped table-bordered table-hover">
+            <tr ng-repeat="facultateData in $data">
+                <td data-title="'ID'" class="col-xs-2">{{facultateData.id}}</td>
+                <td data-title="'Insitutie'" class="col-xs-4">{{facultateData.institution.institutionName}}</td>
+                <td data-title="'Name'" class="col-xs-4">{{facultateData.numeFacultate}}</td>
+                <td data-title="'Edit'" style="white-space: nowrap" class="col-xs-2">
+                    <button class="btn btn-primary btn-xs" ng-click="getFacultate(facultateData)"><i
+                            class="glyphicon glyphicon-pencil"></i></button>
+                    <button class="btn btn-danger btn-xs" ng-click="deleteFacultate(facultateData.id)"><i
+                            class="glyphicon glyphicon-remove"></i></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

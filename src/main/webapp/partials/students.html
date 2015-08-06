@@ -2,7 +2,6 @@
 
 <div class="jumbotron text-center">
     <h1>Students</h1>
-
     <p>This page show all <span class="text-danger">Students</span>.</p>
 </div>
 
@@ -39,21 +38,6 @@
                     first name is required and > 3 letters.</p>
             </div>
         </div>
-        <!--STUDENT'S BIRTHDAY-->
-        <!--<div class="form-group">-->
-        <!--<label class="col-xs-3 control-label">Birthday:</label>-->
-        <!--<div class="col-xs-6">-->
-        <!--<p class="input-group">-->
-        <!--<input type="text" class="form-control" datepicker-popup="dd.MM.yyyy" ng-model="student.birthday"-->
-        <!--is-open="opened" required ng-disabled="true"-->
-        <!--close-text="Close"/>-->
-        <!--<span class="input-group-btn">-->
-        <!--<button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i-->
-        <!--class="glyphicon glyphicon-calendar"></i></button>-->
-        <!--</span>-->
-        <!--</p>-->
-        <!--</div>-->
-        <!--</div>-->
         <!--STUDENT'S BIRTHDAY 720kb.datepicker-->
         <div class="form-group">
             <label class="col-xs-3 control-label">Birthday:</label>
@@ -85,11 +69,19 @@
         <!--DROPDOWN LIST TESTING // STUDENT'S INSTITUTION-->
         <div class="form-group dropdown">
             <label class="col-xs-3 control-label">Institution:</label>
-
             <div class="col-xs-6">
                 <select class="form-control" ng-model="institution"
                         ng-options="institution for institution in institutions">
+                    <option value='' disabled selected style='display:none;'>Select institution</option>
                 </select>
+            </div>
+        </div>
+        <!-- Dropdown list // Student's facultate-->
+        <div class="form-group dropdown">
+            <label class="col-xs-3 control-label">Facultate:</label>
+            <div class="col-xs-6">
+                <select class="form-control" ng-model="facultate"
+                        ng-options="facultate for facultate in facultati"/>
             </div>
         </div>
         <!--SUBMIT + TOASTER-->
@@ -110,7 +102,10 @@
                 <td data-title="'LName'">{{studentData.lastName}}</td>
                 <td data-title="'YearStudy'">{{studentData.yearOfStudy}}</td>
                 <td data-title="'Birthday'">{{studentData.birthday | date: 'dd.MM.yyyy'}}</td>
-                <td data-title="'Institution'">{{studentData.institution.institutionName}}</td>
+                <!-- Student -> Institution -->
+                <!--<td data-title="'Institution'">{{studentData.institution.institutionName}}</td>-->
+                <!-- Student -> Facultate -->
+                <td data-title="'Facultate'">{{studentData.facultate.numeFacultate}}</td>
                 <td data-title="'Edit'" style="white-space: nowrap">
                     <button class="btn btn-primary btn-xs" ng-click="getStudent(studentData)">
                         <i class="glyphicon glyphicon-pencil"></i></button>

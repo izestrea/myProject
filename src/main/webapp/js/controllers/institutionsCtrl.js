@@ -3,16 +3,15 @@
  */
 app.controller('institutionsCtrl', function ($scope, AppFactory, ngTableParams) {
     $scope.institution = {};
-
     $scope.saveInstitution = function () {
         AppFactory.registerInstitution($scope.institution)
             .success(function () {
-                console.log("save!");
+                console.log("institutie inregistrara!");
                 $scope.institutionTable.reload();
                 $scope.institution = {};
             })
             .error(function () {
-                console.log("error!");
+                console.log("inregistrare institutie esuata!");
             });
         $scope.institution = {};
     };
@@ -41,7 +40,7 @@ app.controller('institutionsCtrl', function ($scope, AppFactory, ngTableParams) 
             console.log("institution delete " + id);
             $scope.institutionTable.reload();
         })
-    }
+    };
     $scope.getInstitution = function (data) {
         $scope.institution = data;
         console.log(data);
