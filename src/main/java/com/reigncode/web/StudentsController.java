@@ -40,6 +40,7 @@ public class StudentsController {
     @RequestMapping(value = "/registerStudent/{fac_name}/{inst_name}", method = RequestMethod.POST)
     public void saveStudents(@RequestBody Student student, @PathVariable String fac_name, @PathVariable String inst_name) {
         student.setFacultate(facultateRepository.findByNumeFacultate(fac_name));
+//        System.out.println(fac_name);
         student.setInstitution(institutionRepository.findByInstitutionName(inst_name));
         studentRepository.save(student);
     }

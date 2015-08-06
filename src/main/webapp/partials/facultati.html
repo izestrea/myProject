@@ -23,7 +23,7 @@
              ng-class="{ 'has-error' : userForm.numeFacultate.$invalid && !userForm.numeFacultate.$pristine && submitted}">
             <label class="col-xs-3 control-label">Nume Facultate:</label>
             <div class="col-xs-6">
-                <input name="numeFacultate" class="form-control" type="text" ng-model="facultate.numeFacultate"
+                <input name="numeFacultate" class="form-control" type="text" ng-model="facultati.numeFacultate"
                        required ng-minlength="3" placeholder="Adaoga Facultate"/>
                 <p ng-show="userForm.numeFacultate.$invalid && !userForm.numeFacultate.$pristine && submitted"
                    class="help-block">Numele Facultatii e cimp obligatoriu si trebuie sa contina> 3 litere.</p>
@@ -44,8 +44,8 @@
             <tr ng-repeat="facultateData in $data">
                 <td data-title="'ID'" class="col-xs-2">{{facultateData.id}}</td>
                 <td data-title="'Insitutie'" class="col-xs-4">{{facultateData.institution.institutionName}}</td>
-                <td data-title="'Name'" class="col-xs-4">{{facultateData.numeFacultate}}</td>
-                <td data-title="'Edit'" style="white-space: nowrap" class="col-xs-2">
+                <td data-title="'Facultate'" class="col-xs-4">{{facultateData.numeFacultate}}</td>
+                <td data-title="'Editeaza'" style="white-space: nowrap" class="col-xs-2">
                     <button class="btn btn-primary btn-xs" ng-click="getFacultate(facultateData)"><i
                             class="glyphicon glyphicon-pencil"></i></button>
                     <button class="btn btn-danger btn-xs" ng-click="deleteFacultate(facultateData.id)"><i

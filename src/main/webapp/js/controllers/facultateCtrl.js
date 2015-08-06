@@ -39,6 +39,12 @@ app.controller('facultateCtrl', function ($scope, AppFactory, ngTableParams) {
             $scope.facultateTable.reload();
         })
     };
+    $scope.updateFacultate = function (id) {
+        AppFactory.updateFacultate(id).success(function () {
+            console.log("actualizare facultate " + id);
+            $scope.facultateTable.reload();
+        })
+    }
     $scope.getFacultate = function (data) {
         $scope.facultati = data;
         $scope.institution = data.institution.institutionName;

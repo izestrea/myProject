@@ -45,7 +45,7 @@ app.factory('AppFactory', function ($http) {
 
     //inregistrari
     factory.registerStudent = function (object, fac_name, inst_name) {
-        return $http.post('/api/registerStudent/' + fac_name + inst_name, object);
+        return $http.post('/api/registerStudent/' + fac_name + '/' + inst_name, object);
     };
     factory.registerInstitution = function (object) {
         return $http.post('/api/registerInstitution/', object);

@@ -6,11 +6,14 @@
 app.controller('studentsCtrl', function ($scope, $modal, $log, AppFactory, ngTableParams, toaster) {
     $scope.student = {};
     $scope.saveStudent = function () {
-        AppFactory.registerStudent($scope.student, $scope.institution)
+        console.log($scope.facultati);
+        AppFactory.registerStudent($scope.student, $scope.facultati, $scope.institution)
             .success(function () {
                 console.log("saved!");
                 $scope.studentTable.reload();
                 $scope.student = {};
+                //$scope.institutions = {};
+                //$scope.facultatile = {};
                 toaster.pop('success', "", "Student adaogat cu succes!");
             })
             .error(function () {
@@ -50,6 +53,9 @@ app.controller('studentsCtrl', function ($scope, $modal, $log, AppFactory, ngTab
     AppFactory.allInstitutions().success(function (data) {
         $scope.institutions = data;
     })
+    AppFactory.allFacultati().success(function (data) {
+        $scope.facultatile = data;
+    })
     //delete student
     $scope.deleteStudent = function (id) {
         AppFactory.deleteStudent(id).success(function () {
@@ -67,6 +73,7 @@ app.controller('studentsCtrl', function ($scope, $modal, $log, AppFactory, ngTab
     $scope.getStudent = function (data) {
         $scope.student = data;
         $scope.institution = data.institution.institutionName;
+        $scope.facultati = data.facultate.numeFacultate;
         console.log(data);
     }
     $scope.clear = function () {

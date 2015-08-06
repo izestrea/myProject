@@ -44,4 +44,9 @@ public class FacultateController  {
         studentRepository.delete(stFac);
         facultateRepository.delete(fac_id);
     }
+    @RequestMapping(value = "/updateFacultate/{fc_id}", method = RequestMethod.POST)
+    public void updateFacultate(@RequestBody Facultate facultate, @PathVariable Long fc_id){
+        facultate.setId(fc_id);
+        facultateRepository.save(facultate);
+    }
 }
